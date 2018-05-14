@@ -6,10 +6,18 @@ import (
 )
 
 /*
+#ifdef __APPLE__
+#include <sys/types.h>
+#include <stdlib.h>
+#include <security/pam_modules.h>
+#include <security/pam_appl.h>
+#else
 #include <sys/types.h>
 #include <stdlib.h>
 #include <security/pam_appl.h>
 #include <security/pam_modules.h>
+#include <security/pam_ext.h>
+#endif
 */
 import "C"
 
