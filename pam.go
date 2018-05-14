@@ -10,6 +10,7 @@ import (
 #include <stdlib.h>
 #include <security/pam_appl.h>
 #include <security/pam_modules.h>
+#include <security/pam_ext.h>
 */
 import "C"
 
@@ -38,6 +39,16 @@ func (h Handle) GetUser() (string, error) {
 		return "", pamError{h.pamh, e}
 	}
 	return C.GoString(usr), nil
+}
+
+// GetPass .
+func (h Handle) GetPass()(string,error){
+	var password *C.char
+	e:=C.pam_get_authtok(h.pamh, C.PAM_AUTHTOK, &password, nil)
+	if Value(e)!=Success{
+		return "", pamError{h.pamh, e}
+	}
+	return C.GoString(password),nil
 }
 
 // GetItem for accessing and retrieving pam information of item type
