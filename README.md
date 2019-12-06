@@ -5,7 +5,7 @@ for PAM to load/communicate with for each service.
 
 ## Install
 
-> `go get github.com/zro/pam`
+> `go get github.com/soopsio/pam`
 
 ## Usage
 
@@ -13,7 +13,7 @@ Declare PAM request handling methods like this:
 
 ```go
 
-  import "github.com/donpark/pam"
+  import "github.com/soopsio/pam"
   
   type mypam struct {
     // your pam vars
